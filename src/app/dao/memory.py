@@ -42,9 +42,9 @@ def find_customer(customer_id):
         return None
 
 
-def find_food_term(term):
+def find_food_term(term, limit):
     ans = []
     for k, d in data.items():
         if term in d['raw_text']:
             ans.append(k)
-    return ans
+    return ans[:limit]

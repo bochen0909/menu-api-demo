@@ -32,7 +32,7 @@ def find_customer(customer_id):
     return None
 
 
-def find_food_term(term):
+def find_food_term(term, limit):
     ans = []
     body = {
         "query": {
@@ -53,4 +53,4 @@ def find_food_term(term):
         ans.append({'id': docid, 'score': score})
     
     ans.sort(key=lambda d: -d['score'])
-    return ans 
+    return ans[:limit]

@@ -1,15 +1,16 @@
+from bs4 import BeautifulSoup
 import glob
 import json
 import os
 import logging
 logging.basicConfig(
     level=logging.INFO,  # Set the logging level
-    format="%(asctime)s [%(levelname)s] %(message)s",  # Set the log message format
+    # Set the log message format
+    format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
         logging.StreamHandler()  # Output logs to the console
     ]
 )
-from bs4 import BeautifulSoup
 
 data_folder = os.getenv("DATA_HOME")
 if not data_folder:
@@ -18,6 +19,7 @@ if not data_folder:
 json_files = glob.glob(f"{data_folder}/**/*.json", recursive=True)
 
 logging.info(f"Loadding {len(json_files)} files from '{data_folder}'.")
+
 
 def read_json_file(filepath):
     with open(filepath) as fil:
@@ -46,5 +48,5 @@ def find_food_term(term, limit):
     ans = []
     for k, d in data.items():
         if term in d['raw_text']:
-            ans.append(k)
+            ans.append({'id': k, 'score': None})
     return ans[:limit]

@@ -10,4 +10,4 @@ app.include_router(v1_api_router )  # <----- API versioning
 
 @app.get("/")
 async def root():
-    return {"message": "Hello, this is a demo of menu API."}
+    return {"message": "Hello, this is a demo application for restaurant API."}

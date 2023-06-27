@@ -1,13 +1,8 @@
 #!/usr/bin/env python3
-
-# docker run -p 9200:9200 --name es01 --rm  -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:8.8.1
-
 import glob
 import json
 from elasticsearch import Elasticsearch, helpers
 from bs4 import BeautifulSoup
-
-import os
 import sys
 import logging
 logging.basicConfig(
@@ -18,7 +13,6 @@ logging.basicConfig(
         logging.StreamHandler()  # Output logs to the console
     ]
 )
-
 
 def process_folder(data_folder, url):
     json_files = glob.glob(f"{data_folder}/**/*.json", recursive=True)
@@ -36,7 +30,7 @@ def process_folder(data_folder, url):
 
     docs = [read_json_file(path) for path in json_files]
     endpoints = url.split(",")
-    es = Elasticsearch(endpoints) 
+    es = Elasticsearch(endpoints)
     if not es.ping():
         print(es.info())
         raise ValueError("Connection failed")

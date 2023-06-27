@@ -46,11 +46,11 @@ def find_food_term(term, limit):
     }
 
     res = es.search(index="restaurants-index", body=body)
-    
+
     for hit in res['hits']['hits']:
         score = hit['_score']
         docid = hit['_source']['id']
         ans.append({'id': docid, 'score': score})
-    
+
     ans.sort(key=lambda d: -d['score'])
     return ans[:limit]

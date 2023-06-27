@@ -1,0 +1,38 @@
+version: '3'
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.8.1
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    ports:
+      - 9200:9200
+    volumes:
+      - /host/path:/container/path
+    networks:
+      - menudemo
+    hostname: es01
+    healthcheck:
+      test: curl -s http://es01:9200 >/dev/null || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 50
+
+  api:
+    image: menuapidemo:latest
+    volumes:
+      - ${PWD}/data/restaurants:/data  
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+    ports:
+      - 8000:8000
+    networks:
+      - menudemo
+    hostname: api
+    command: >
+      sh -c "load_data_elasticsearch.py /data && 
+             uvicorn app.main:app --host 0.0.0.0"
+
+networks:
+  menudemo:

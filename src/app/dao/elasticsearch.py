@@ -13,7 +13,7 @@ logging.basicConfig(
     ]
 )
 
-es_ep = [os.environ.get('ES_ENDPOINT', "http://localhost:9200")]
+es_ep = [os.environ.get('ES_ENDPOINT', "http://es01:9200")]
 logging.info(f"Connecting to {es_ep}")
 es = Elasticsearch(es_ep)
 

@@ -57,5 +57,5 @@ if __name__ == '__main__':
         print(f"Usage: python {sys.argv[0]} <data folder> [elasticsearch url]")
     else:
         folder_path = sys.argv[1]
-        url = "http://localhost:9200" if len(sys.argv) == 2 else sys.argv[2]
+        url = "http://es01:9200" if len(sys.argv) == 2 else sys.argv[2]
         process_folder(folder_path, url)

@@ -1,12 +1,10 @@
 # Menu API Demo
 
-## Summary
-
-This is a demonstration of API design for restaurant application. It uses `ElasticSearch` as the data store and `FastAPI/uvicorn` as the API server.
+Menu API uses `ElasticSearch` as the data store and `FastAPI/uvicorn` as the API server.
 
 
-## Prerequisites
-The below is the settings for development/testing environment.
+## Requirements
+The development environment uses the following settings.
 * Linux or Windows WSL2
 * Git
 * Python 3.10
@@ -15,13 +13,13 @@ The below is the settings for development/testing environment.
   
 ## Quick Start
 
-Using `docker compose` is the fastest way to start the application (Be sure that ports 8000 and 9200 are not used by other processes).
+Using `docker compose` is the fastest way to start the application (Make sure that ports 8000 and 9200 are not occupied by other processes).
 
 ```shell
     $ git clone https://github.com/bochen0909/menu-api-demo.git
     $ cd menu-api-demo
 ```
-All the following commands are assumed to run under `menu-api-demo` folder.
+All of the subsequent commands are expected to be executed within the `menu-api-demo` folder.
 
 Build the image
 ```shell
@@ -73,7 +71,7 @@ Cleanup
     $ git clone https://github.com/bochen0909/menu-api-demo.git
     $ cd menu-api-demo
 ```
-All the following commands are assumed to run under `menu-api-demo` folder.
+All of the subsequent commands are expected to be executed within the `menu-api-demo` folder.
 
 ### Build the image
 ```shell
@@ -96,7 +94,7 @@ All the following commands are assumed to run under `menu-api-demo` folder.
     CONTAINER ID   IMAGE                                                 COMMAND                  CREATED         STATUS         PORTS                              NAMES
 9de65331d4e1   docker.elastic.co/elasticsearch/elasticsearch:8.8.1   "/bin/tini -- /usr/l…"   6 minutes ago   Up 6 minutes   0.0.0.0:9200->9200/tcp, 9300/tcp   es01
 ```
-Here security is disabled so that there is no needs to handle user/password and http certificate authentication. Be aware that it is not applicable to a production environment.
+Here security is disabled so that there is no needs to handle username & password authentication and http client authentication. Be aware that it is not applicable to a production environment.
 
 ### Populate sample data
 ```shell

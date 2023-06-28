@@ -15,7 +15,7 @@ The below is the settings for development/testing environment.
   
 ## Quick Start
 
-Using docker compose is the fastest way to start the application (Be sure that ports 8000 and 9200 are not used by other processes).
+Using `docker compose` is the fastest way to start the application (Be sure that ports 8000 and 9200 are not used by other processes).
 
 ```shell
     $ git clone https://github.com/bochen0909/menu-api-demo.git
@@ -116,7 +116,7 @@ It loaded all json files from `data/restaurants` folder to elastic search instan
     INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 ```
 
-Now the whole application is up. See [Quick Start]($quick-start) for examples to call the API's. 
+Now the whole application is up. See [Quick Start](#quick-start) for examples to call the API's. 
 
 ### Cleanup
 
@@ -164,7 +164,7 @@ Alternativly use `conda` to create an environment.
     $ pip install -r requirements.txt
 ```
 
-### Start an Elasticsearch instance (might take a few time)
+### Start an Elasticsearch instance (might take a bit time)
 ```shell
     $ docker run -p 9200:9200  -e "discovery.type=single-node"  -e "xpack.security.enabled=false"  -it --rm  --name es01 docker.elastic.co/elasticsearch/elasticsearch:8.8.1
 ```

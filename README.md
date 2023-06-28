@@ -13,7 +13,7 @@ The development environment uses the following settings.
   
 ## Quick Start
 
-Using `docker compose` is the fastest way to start the application (Make sure that ports 8000 and 9200 are not occupied by other processes).
+Using `docker compose` is the fastest way to start the application (Make sure ports 8000 and 9200 are not occupied by other processes).
 
 ```shell
     $ git clone https://github.com/bochen0909/menu-api-demo.git
@@ -42,18 +42,18 @@ menu-api-demo-api-1            | INFO:     Application startup complete.
 menu-api-demo-api-1            | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 ```
 
-open [Swagger UI](http://127.0.0.1:8000/docs) to test the APIs,
+You can either access [Swagger UI](http://127.0.0.1:8000/docs) to test the APIs,
 
-or alternatively to call it from command line. 
+or invoke them from the command line. 
 
-For example, find the top 3 restaurants that service coffee.
+For example, finding the top 3 restaurants that serve coffee.
 
 ```shell
     $ curl http://127.0.0.1:8000/v1/food/coffee?limit=3
     [{"id":"1364","score":2.8030283},{"id":"3677","score":1.9024392},{"id":"6022","score":1.9024392}]
 ```
 
-Find the menu URL by id.
+Finding the menu URL by id.
 
 ```shell
     $ curl http://127.0.0.1:8000/v1/restaurant/1364
@@ -94,7 +94,7 @@ All of the subsequent commands are expected to be executed within the `menu-api-
     CONTAINER ID   IMAGE                                                 COMMAND                  CREATED         STATUS         PORTS                              NAMES
 9de65331d4e1   docker.elastic.co/elasticsearch/elasticsearch:8.8.1   "/bin/tini -- /usr/l…"   6 minutes ago   Up 6 minutes   0.0.0.0:9200->9200/tcp, 9300/tcp   es01
 ```
-Here security is disabled so that there is no needs to handle username & password authentication and http client authentication. Be aware that it is not applicable to a production environment.
+In this demo, security measures such as username and password authentication and HTTP client authentication are disabled for the sake of simplicity. However, please note that this approach is not suitable for a production environment.
 
 ### Populate sample data
 ```shell
@@ -103,7 +103,7 @@ Here security is disabled so that there is no needs to handle username & passwor
     2023-06-28 14:41:23,104 [INFO] HEAD http://es01:9200/ [status:200 duration:0.042s]
     2023-06-28 14:41:23,410 [INFO] PUT http://es01:9200/_bulk [status:200 duration:0.305s]
 ```
-It loaded all json files from `data/restaurants` folder to elastic search instance.
+All json files are loaded from `data/restaurants` folder to elastic search instance.
 
 ### Start the API instance
 ```shell
@@ -114,7 +114,7 @@ It loaded all json files from `data/restaurants` folder to elastic search instan
     INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 ```
 
-Now the whole application is up. See [Quick Start](#quick-start) for examples to call the API's. 
+Now the whole application is up. For examples on how to call the APIs, please refer to [Quick Start](#quick-start) 
 
 ### Cleanup
 
@@ -133,13 +133,13 @@ When developing a demonstration application, there are several options to consid
 - Single Node vs Multi Nodes.
 - ...
 
-For scalability and large deployments, it is recommended to separate the data storage and API services. This separation allows for better management and flexibility in scaling the application.
+For enhanced scalability and large-scale deployments, it is advisable to decouple the data storage from the API services. This separation enables improved management and provides flexibility when scaling the application.
 
-The API of the application needs to perform text data searching. While traditional databases have the ability to handle text matching, tools like Lucene or Elasticsearch offer more versatility and robustness in terms of search functions.
+The application's API requires text data searching capabilities. While traditional databases can handle text matching, utilizing tools like Lucene or Elasticsearch offers greater versatility and robustness in terms of search functions.
 
-Taking into account the scalability and efficient search requirements, the final design choice is to use FastAPI for developing the APIs, while leveraging Elasticsearch as the data store.
+Considering the need for scalability and efficient search functionality, the optimal design decision is to employ FastAPI for API development and utilize Elasticsearch as the data store.
 
-By implementing this design, the application can benefit from the powerful searching capabilities of Elasticsearch while enjoying the high-performance and user-friendly development experience provided by FastAPI.
+By implementing this design, the application can leverage the robust searching capabilities of Elasticsearch while simultaneously benefiting from the high-performance and developer-friendly experience offered by FastAPI. This combination ensures efficient search functionality and a seamless development process.
 
 ## Development
 
@@ -148,14 +148,14 @@ By implementing this design, the application can benefit from the powerful searc
     $ git clone https://github.com/bochen0909/menu-api-demo.git
     $ cd menu-api-demo
 ```
-All the following commands are assumed to run under `menu-api-demo` folder.
+All of the following commands are expected to be executed within the `menu-api-demo` folder.
 
 ### Create a Virtual Environment
 ```shell
     $ python -m venv .venv
     $ source .venv/bin/activate
 ```
-Alternativly use `conda` to create an environment.
+Alternatively, you can use `conda` to create a virtual environment.
 
 ### Install required libs
 ```shell
@@ -176,5 +176,5 @@ Alternativly use `conda` to create an environment.
     $ ES_ENDPOINT=http://localhost:9200 PYTHONPATH=`pwd`/src uvicorn app.main:app --reload
 ```
 
-Now use your favorite IDE to open the project.
+Now you can proceed to open the project using the IDE of your choice.
 

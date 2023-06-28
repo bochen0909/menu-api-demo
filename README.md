@@ -1,7 +1,6 @@
 # Menu API Demo
 
-Menu API uses `ElasticSearch` as the data store and `FastAPI/uvicorn` as the API server.
-
+Considering the need for scalability and efficient search functionality, Menu API uses `ElasticSearch` as the data store and `FastAPI/uvicorn` as the API server. By implementing this design, the application can leverage the robust searching capabilities of `Elasticsearch` while simultaneously benefiting from the high-performance and developer-friendly experience offered by `FastAPI`. This combination ensures efficient search functionality and a seamless development process.
 
 ## Requirements
 The development environment uses the following settings.
@@ -139,7 +138,6 @@ The application's API requires text data searching capabilities. While tradition
 
 Considering the need for scalability and efficient search functionality, the optimal design decision is to employ FastAPI for API development and utilize Elasticsearch as the data store.
 
-By implementing this design, the application can leverage the robust searching capabilities of Elasticsearch while simultaneously benefiting from the high-performance and developer-friendly experience offered by FastAPI. This combination ensures efficient search functionality and a seamless development process.
 
 ## Development
 
